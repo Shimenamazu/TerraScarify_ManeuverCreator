@@ -1,0 +1,2 @@
+# TerraScarify_ManeuverCreator
+TerraScarifyTRPGのマニューバ・バーストスキル・アライブスキルを簡単に組み立てられるページを目指してる。
