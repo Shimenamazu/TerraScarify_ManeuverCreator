@@ -1,3 +1,6 @@
-document.getElementById("btn").addEventListener("click", () => {
-  alert("動いてる！");
+const panel = document.getElementById("slide-panel");
+const btn = document.getElementById("toggleBtn");
+
+btn.addEventListener("click", () => {
+  panel.classList.toggle("open");
 });
