@@ -14,302 +14,181 @@
       <!--インポート-->
       <section class="importer">
         <h2>インポート</h2>
-        <textarea style="width: 100%">
-ここに生成済みのテキストを張り付け
-        </textarea>
+        <textarea
+          style="width: 100%; resize: none"
+          placeholder="ここに生成済みのテキストを張り付け"
+          id="importing"
+        ></textarea>
         <br />
         <button>インポートする</button>
       </section>
 
-      <!--基本設定-->
-      <section class="basic-setting">
-        <h2>基本設定</h2>
-        <!--スキル名-->
-        スキル名 <input type="text" />
-        <br />
-        <!--種別-->
-        種別
-        <select>
-          <option>マニューバ</option>
-          <option>バーストスキル</option>
-          <option>アライブスキル</option>
-        </select>
-        <br />
-        <!--タイミング-->
-        タイミング
-        <select>
-          <option>調整</option>
-          <option>準備</option>
-          <option>主要</option>
-          <option>直前</option>
-        </select>
-        <br />
-        <!--使用する技能-->
-        判定技能
-        <input type="text" />
-        <select>
-          <option>等倍</option>
-          <option>半分</option>
-        </select>
-      </section>
+      <!--大枠-->
+      <div class="overall">
+        <!--左側-->
+        <section class="left-panel">
+          <!--基本設定-->
+          <section class="basic-setting">
+            <h2>基本設定</h2>
+            <!--スキル名-->
+            スキル名 <input type="text" />
+            <br />
+            <!--種別-->
+            種別
+            <select>
+              <option>マニューバ</option>
+              <option>バーストスキル</option>
+              <option>アライブスキル</option>
+            </select>
+            <br />
+            <!--タイミング-->
+            タイミング
+            <select>
+              <option>調整</option>
+              <option>準備</option>
+              <option>主要</option>
+              <option>直前</option>
+            </select>
+            <br />
+            <!--使用する技能-->
+            判定技能
+            <input type="text" />
+            <select>
+              <option>等倍</option>
+              <option>半分</option>
+            </select>
+          </section>
+          <!--トークン状況-->
+          <section class="token">
+            <h2>トークン</h2>
+            <!--トークン差-->
+            <table class="token-table">
+              <colgroup>
+                <col class="table-head-0" />
+                <col class="table-head-1" />
+                <col class="table-head-2" />
+                <col class="table-head-3" />
+              </colgroup>
+              <tr>
+                <th>トークン</th>
+                <th>通常</th>
+                <th>成功</th>
+                <th>クリティカル</th>
+              </tr>
+              <tr>
+                <td>獲得トークン</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>要求トークン</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>不足分</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </table>
+            <br />
+            <!--獲得トークン-->
+            <table class="token-table">
+              <colgroup>
+                <col class="table-head-0" />
+                <col class="table-head-1" />
+                <col class="table-head-2" />
+                <col class="table-head-3" />
+              </colgroup>
+              <tr>
+                <th>獲得トークン</th>
+                <th>通常</th>
+                <th>成功</th>
+                <th>クリティカル</th>
+              </tr>
+              <tr>
+                <td>タイミング</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>判定</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>ペナルティエフェクト</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>補正</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>合計</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </table>
+            <br />
+            <!--要求トークン-->
+            <table class="token-table">
+              <colgroup>
+                <col class="table-head-0" />
+                <col class="table-head-1" />
+                <col class="table-head-2" />
+                <col class="table-head-3" />
+              </colgroup>
+              <tr>
+                <th>要求トークン</th>
+                <th>通常</th>
+                <th>成功</th>
+                <th>クリティカル</th>
+              </tr>
+              <tr>
+                <td>エフェクト</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>アライブエフェクト</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>補正</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>合計</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </table>
+          </section>
+        </section>
 
-      <!--トークン状況-->
-      <section class="token">
-        <h2>トークン</h2>
-        <!--獲得トークン-->
-        <table>
-          <tr>
-            <th>獲得トークン</th>
-            <th>通常</th>
-            <th>成功</th>
-            <th>クリティカル</th>
-          </tr>
-          <tr>
-            <td>タイミング</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>判定</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>ペナルティエフェクト</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>補正</td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr>
-            <td>合計</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-        </table>
-        <br />
-        <!--要求トークン-->
-        <table>
-          <tr>
-            <th>要求トークン</th>
-            <th>通常</th>
-            <th>成功</th>
-            <th>クリティカル</th>
-          </tr>
-          <tr>
-            <td>エフェクト</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>アライブエフェクト</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>補正</td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr>
-            <td>合計</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-        </table>
-      </section>
-
-      <!--エフェクト-->
-      <section class="effect">
-        <h2>エフェクト</h2>
-
-        <section class="roll">
-          <h3>判定</h3>
-          <div class="eff-head">
-            <div style="width: 15%">エフェクト名</div>
-            <div style="width: 10%">取得段階</div>
-            <div style="width: 5%">取得</div>
-            <div style="width: 10%">要求トークン</div>
-            <div style="width: 40%">効果</div>
-            <div style="width: 20%">持続</div>
-          </div>
-          <div class="eff">
-            <div class="eff-name">判定値増加</div>
-            <div class="eff-select">
-              <!--エフェクト選択-->
-              <div class="eff-cell">
-                <!--成功段階-->
-                <div class="eff-step">成功</div>
-                <!--選択-->
-                <input type="checkbox" />
-                <!--トークン-->
-                <div class="eff-token">1</div>
-                <!--内容-->
-                自身の
-                <input type="text" />
-                の判定値が
-                <select>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                  <option>50</option>
-                </select>
-                増加する。
-                <!--持続-->
-                <div>
-                  <input type="text" />
-                  <select>
-                    <option>回</option>
-                    <option>手番中</option>
-                    <option>短い</option>
-                    <option>ラウンド</option>
-                  </select>
-                </div>
-              </div>
-              <div class="eff-cell">
-                <!--成功段階-->
-                <div>成功</div>
-                <!--選択-->
-                <input type="checkbox" />
-                <!--トークン-->
-                <div>1</div>
-                <!--内容-->
-                自身の
-                <input type="text" />
-                の判定値が
-                <select>
-                  <option>変更なし</option>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                  <option>50</option>
-                </select>
-                増加する。
-                <!--持続-->
-                <div>
-                  <input type="text" />
-                  <select>
-                    <option>変更なし</option>
-                    <option>回</option>
-                    <option>手番中</option>
-                    <option>短い</option>
-                    <option>ラウンド</option>
-                  </select>
-                </div>
-              </div>
-              <div class="eff-cell">
-                <!--成功段階-->
-                <div>成功</div>
-                <!--選択-->
-                <input type="checkbox" />
-                <!--トークン-->
-                <div>1</div>
-                <!--内容-->
-                自身の
-                <input type="text" />
-                の判定値が
-                <select>
-                  <option>変更なし</option>
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>40</option>
-                  <option>50</option>
-                </select>
-                増加する。
-                <!--持続-->
-                <div>
-                  <input type="text" />
-                  <select>
-                    <option>変更なし</option>
-                    <option>回</option>
-                    <option>手番中</option>
-                    <option>短い</option>
-                    <option>ラウンド</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!--左側-->
+        <section class="right-panel">
+          <h2>エフェクトエディタ</h2>
         </section>
-        <section class="status">
-          <h3>ステータス</h3>
-        </section>
-        <section class="healing">
-          <h3>治療</h3>
-        </section>
-        <section class="knockback">
-          <h3>強制移動</h3>
-        </section>
-        <section class="buff-debuff">
-          <h3>バフ・デバフ</h3>
-        </section>
-        <section class="element">
-          <h3>元素</h3>
-        </section>
-        <section class="tactics">
-          <h3>戦術</h3>
-        </section>
-        <section class="other">
-          <h3>その他</h3>
-        </section>
-      </section>
+      </div>
     </main>
-
-    <!--アライブエフェクト-->
-
-    <!--ペナルティエフェクト-->
-
-    <!--スライドパネル-->
-    <div id="slide-panel" class="slide-panel">
-      <div class="panel-content"></div>
-    </div>
-
-    <!--フッター-->
-    <div class="footer-fixed">
-      <table>
-        <tr>
-          <th>トークン</th>
-          <th>通常</th>
-          <th>成功</th>
-          <th>クリティカル</th>
-        </tr>
-        <tr>
-          <td>要求量</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>獲得量</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>不足分</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-      <button id="toggleBtn">生成したテキストを表示</button>
-    </div>
-
     <script src="js/main.js"></script>
   </body>
 </html>

@@ -1,6 +1,11 @@
-const panel = document.getElementById("slide-panel");
-const btn = document.getElementById("toggleBtn");
+//
 
-btn.addEventListener("click", () => {
+//値
+
+//パネル
+const panel = document.getElementById("slide-panel");
+const panel_btn = document.getElementById("toggleBtn");
+
+panel_btn.addEventListener("click", () => {
   panel.classList.toggle("open");
 });
