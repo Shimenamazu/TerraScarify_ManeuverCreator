@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TEST</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <button title="ここを押すと実行されます">実行</button>
+    <div id="container"></div>
+
+    <script>
+      const A = [1, 2, 3];
+      const container = document.getElementById("container");
+
+      A.forEach((value, index) => {
+        // 行全体
+        const row = document.createElement("div");
+
+        // チェックボックス
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        // 表示用div
+        const text = document.createElement("div");
+        text.textContent = value * 2;
+
+        // チェック状態が変わったら再計算
+        checkbox.addEventListener("change", () => {
+          text.textContent = checkbox.checked ? value * 3 : value * 2;
+        });
+
+        row.appendChild(checkbox);
+        row.appendChild(text);
+        container.appendChild(row);
+      });
+    </script>
+  </body>
+</html>
