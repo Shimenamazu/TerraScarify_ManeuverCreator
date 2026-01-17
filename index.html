@@ -192,7 +192,26 @@
             <span id="add-eff-button-text">エフェクト追加</span>
             <!--追加用パネル-->
             <section id="add-eff-panel" class="hidden">
+              <!--エフェクトボタンリスト-->
               <div id="eff-list-box"></div>
+              <!--追加エディター本体-->
+              <section id="build-eff-editer" class="hidden">
+                <!--名前-->
+                <span id="build-eff-name">あああ</span>
+                <!--再選択ボタン-->
+                <button id="build-eff-rechoice">変更</button>
+                <!--命名系エフェクト-->
+                <div id="build-eff-panel-name" class="build-eff-panel hidden">
+                  命名
+                </div>
+                <!--付与系エフェクト-->
+                <div
+                  id="build-eff-panel-enchant"
+                  class="build-eff-panel hidden"
+                >
+                  付与
+                </div>
+              </section>
             </section>
             <h4>通常</h4>
             <h4>成功</h4>
@@ -201,6 +220,6 @@
         </section>
       </div>
     </main>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>
