@@ -20,7 +20,7 @@
           id="importing"
         ></textarea>
         <br />
-        <button>インポートする</button>
+        <button id="debug">デバッグ</button>
       </section>
 
       <!--大枠-->
@@ -35,27 +35,27 @@
             <br />
             <!--種別-->
             種別
-            <select>
-              <option>マニューバ</option>
-              <option>バーストスキル</option>
-              <option>アライブスキル</option>
+            <select id="type-select">
+              <option value="man">マニューバ</option>
+              <option value="burst">バーストスキル</option>
+              <option value="alive">アライブスキル</option>
             </select>
             <br />
             <!--タイミング-->
             タイミング
-            <select>
-              <option>調整</option>
-              <option>準備</option>
-              <option>主要</option>
-              <option>直前</option>
+            <select id="tmg-select">
+              <option value="adj">調整</option>
+              <option value="pre">準備</option>
+              <option value="main">主要</option>
+              <option value="just">直前</option>
             </select>
             <br />
             <!--使用する技能-->
             判定技能
             <input type="text" />
-            <select>
-              <option>等倍</option>
-              <option>半分</option>
+            <select id="pow-select">
+              <option value="full">等倍</option>
+              <option value="half">半分</option>
             </select>
           </section>
           <!--トークン状況-->
@@ -65,33 +65,33 @@
             <table class="token-table">
               <colgroup>
                 <col class="table-head-0" />
-                <col class="table-head-1" />
+                <col class="table-head-1 only-BA" />
                 <col class="table-head-2" />
                 <col class="table-head-3" />
               </colgroup>
               <tr>
                 <th>トークン</th>
-                <th>通常</th>
+                <th class="only-BA">失敗</th>
                 <th>成功</th>
                 <th>クリティカル</th>
               </tr>
               <tr>
                 <td>獲得トークン</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-g2-f" class="only-BA">0</td>
+                <td id="t-g2-s">0</td>
+                <td id="t-g2-c">0</td>
               </tr>
               <tr>
                 <td>要求トークン</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-c2-f" class="only-BA">0</td>
+                <td id="t-c2-s">0</td>
+                <td id="t-c2-c">0</td>
               </tr>
               <tr>
                 <td>不足分</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-l-f" class="only-BA">0</td>
+                <td id="t-l-s">0</td>
+                <td id="t-l-c">0</td>
               </tr>
             </table>
             <br />
@@ -99,45 +99,45 @@
             <table class="token-table">
               <colgroup>
                 <col class="table-head-0" />
-                <col class="table-head-1" />
+                <col class="table-head-1 only-BA" />
                 <col class="table-head-2" />
                 <col class="table-head-3" />
               </colgroup>
               <tr>
                 <th>獲得トークン</th>
-                <th>通常</th>
+                <th class="only-BA">失敗</th>
                 <th>成功</th>
                 <th>クリティカル</th>
               </tr>
-              <tr>
+              <tr class="only-BA">
                 <td>タイミング</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-t-f">0</td>
+                <td id="t-t-s">0</td>
+                <td id="t-t-c">0</td>
               </tr>
               <tr>
                 <td>判定</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-r-f" class="only-BA">0</td>
+                <td id="t-r-s">0</td>
+                <td id="t-r-c">0</td>
               </tr>
-              <tr>
+              <tr class="only-BA">
                 <td>ペナルティエフェクト</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-p-f">0</td>
+                <td id="t-p-s">0</td>
+                <td id="t-p-c">0</td>
               </tr>
               <tr>
                 <td>補正</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-gc-f" class="only-BA">0</td>
+                <td id="t-gc-s">0</td>
+                <td id="t-gc-c">0</td>
               </tr>
               <tr>
                 <td>合計</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-g-f" class="only-BA">0</td>
+                <td id="t-g-s">0</td>
+                <td id="t-g-c">0</td>
               </tr>
             </table>
             <br />
@@ -145,39 +145,39 @@
             <table class="token-table">
               <colgroup>
                 <col class="table-head-0" />
-                <col class="table-head-1" />
+                <col class="table-head-1 only-BA" />
                 <col class="table-head-2" />
                 <col class="table-head-3" />
               </colgroup>
               <tr>
                 <th>要求トークン</th>
-                <th>通常</th>
+                <th class="only-BA">失敗</th>
                 <th>成功</th>
                 <th>クリティカル</th>
               </tr>
               <tr>
                 <td>エフェクト</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-e-f" class="only-BA">0</td>
+                <td id="t-e-s">0</td>
+                <td id="t-e-c">0</td>
               </tr>
-              <tr>
+              <tr class="only-BA">
                 <td>アライブエフェクト</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-a-f">0</td>
+                <td id="t-a-s">0</td>
+                <td id="t-a-c">0</td>
               </tr>
               <tr>
                 <td>補正</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-cc-f" class="only-BA">0</td>
+                <td id="t-cc-s">0</td>
+                <td id="t-cc-c">0</td>
               </tr>
               <tr>
                 <td>合計</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td id="t-c-f" class="only-BA">0</td>
+                <td id="t-c-s">0</td>
+                <td id="t-c-c">0</td>
               </tr>
             </table>
           </section>
@@ -220,7 +220,7 @@
                 </div>
               </section>
             </section>
-            <h4>通常</h4>
+            <h4>失敗</h4>
             <h4>成功</h4>
             <h4>クリティカル</h4>
           </section>
