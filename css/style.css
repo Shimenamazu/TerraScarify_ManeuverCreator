@@ -74,6 +74,10 @@ main {
   flex-shrink: 0; /* 縮まないように */
 }
 
+.build-eff-panel-content {
+  width: 80%;
+}
+
 .hidden {
   display: none !important;
 }

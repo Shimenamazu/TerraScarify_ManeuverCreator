@@ -183,9 +183,12 @@
           </section>
         </section>
 
-        <!--左側-->
+        <!--右側-->
         <section class="right-panel">
           <h2>エフェクトエディタ</h2>
+          <select id="sp-list" style="width: 100px">
+            移動力増加
+          </select>
           <section class="editer">
             <!--エフェクト追加-->
             <button id="add-eff-button">+</button>
@@ -197,7 +200,7 @@
               <!--追加エディター本体-->
               <section id="build-eff-editer" class="hidden">
                 <!--名前-->
-                <span id="build-eff-name">あああ</span>
+                <span id="build-eff-name"></span>
                 <!--再選択ボタン-->
                 <button id="build-eff-rechoice">変更</button>
                 <!--命名系エフェクト-->
@@ -213,16 +216,70 @@
                 </div>
                 <!--エフェクト本文-->
                 <div class="build-eff-panel-content">
-                  <select id="target-select" class="build-eff-content"></select>
-                  <span id="eff-textbox-top" class="build-eff-content"></span>
-                  <select id="power-select" class="build-eff-content"></select>
-                  <span id="eff-textbox-end" class="build-eff-content"></span>
+                  <!--効果-->
+                  <div>
+                    <select
+                      id="editer-target-select"
+                      class="build-eff-content"
+                    ></select>
+                    <span
+                      id="editer-eff-textbox-top"
+                      class="build-eff-content"
+                    ></span>
+                    <select
+                      id="editer-power-select"
+                      class="build-eff-content"
+                    ></select>
+                    <span
+                      id="editer-eff-textbox-end"
+                      class="build-eff-content"
+                    ></span>
+                    <!--持続-->
+                    <span>(</span>
+                    <span
+                      id="editer-const-cont"
+                      class="build-eff-content"
+                    ></span>
+                    <input
+                      type="number"
+                      min="1"
+                      style="width: 30px"
+                      id="editer-cont-val"
+                      value="1"
+                      class="build-eff-content"
+                    />
+                    <select
+                      id="editer-type-select"
+                      class="build-eff-content"
+                    ></select>
+                    <span>)</span>
+                  </div>
+                  <!--持続-->
+                  <div></div>
+                  <!--トークン-->
+                  <div style="text-align: right">
+                    <span>要求トークン：</span>
+                    <span id="editer-need-token">0</span>
+                    <div>
+                      <span id="add-eff-fail" class="build-eff-content"
+                        ><span style="margin-left: 20px">失敗</span
+                        ><input type="checkbox"
+                      /></span>
+                      <span style="margin-left: 20px">成功</span
+                      ><input type="checkbox" />
+                      <span style="margin-left: 20px">クリティカル </span
+                      ><input type="checkbox" />
+                    </div>
+                    <div>
+                      <button>追加</button>
+                    </div>
+                  </div>
                 </div>
               </section>
             </section>
-            <h4>失敗</h4>
-            <h4>成功</h4>
-            <h4>クリティカル</h4>
+            <section class="only-BA"><h4>失敗</h4></section>
+            <section><h4>成功</h4></section>
+            <section><h4>クリティカル</h4></section>
           </section>
         </section>
       </div>
