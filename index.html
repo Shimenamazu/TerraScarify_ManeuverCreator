@@ -218,6 +218,13 @@
                 <div class="build-eff-panel-content">
                   <!--効果-->
                   <div>
+                    <span id="p-eff-panel" style="margin-right: 10px"
+                      >[
+                      <select id="p-eff">
+                        <option value="consider">対価</option>
+                        <option value="recoil">反動</option></select
+                      >]
+                    </span>
                     <select
                       id="editer-target-select"
                       class="build-eff-content"
@@ -261,17 +268,31 @@
                     <span>要求トークン：</span>
                     <span id="editer-need-token">0</span>
                     <div>
-                      <span id="add-eff-fail" class="build-eff-content"
-                        ><span style="margin-left: 20px">失敗</span
-                        ><input type="checkbox"
-                      /></span>
-                      <span style="margin-left: 20px">成功</span
-                      ><input type="checkbox" />
-                      <span style="margin-left: 20px">クリティカル </span
-                      ><input type="checkbox" />
+                      <span
+                        id="add-eff-fail"
+                        class="build-eff-content"
+                        style="margin-left: 20px"
+                        ><label
+                          ><input
+                            type="checkbox"
+                            checked
+                            id="editer-qual-f" /></label
+                        ><span>失敗</span></span
+                      >
+                      <label style="margin-left: 20px"
+                        ><input type="checkbox" checked id="editer-qual-s" />
+                        <span>成功</span></label
+                      >
+                      <label style="margin-left: 20px">
+                        <input
+                          type="checkbox"
+                          checked
+                          id="editer-qual-c"
+                        /><span>クリティカル </span></label
+                      >
                     </div>
                     <div>
-                      <button>追加</button>
+                      <button id="editer-add-button">追加</button>
                     </div>
                   </div>
                 </div>

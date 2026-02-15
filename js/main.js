@@ -19,7 +19,7 @@ const editer_const_cont_text = document.getElementById("editer-const-cont"); //�
 const editer_cont_val = document.getElementById("editer-cont-val"); //持続入力ボックス
 const editer_type_select = document.getElementById("editer-type-select"); //持続選択プルダウン
 const editer_need_token = document.getElementById("editer-need-token"); //要求トークン
-
+const editer_add_button = document.getElementById("editer-add-button"); //追加ボタン
 //変数
 let unit_target = "ユニット1体"; //ユニット対象の数
 
@@ -38,6 +38,11 @@ let man_tmg = "adj";
 let man_pow = "full";
 let specializing = "mov_inc";
 let editing_id = "";
+let effects = []; //取得エフェクト
+let a_effects = []; //取得アライブエフェクト
+let p_effects = []; //取得ペナルティエフェクト
+
+function show_effs() {}
 
 //クラス
 class Effect {
@@ -56,6 +61,7 @@ class Effect {
     cont_coef_times,
     short_text,
     cont_coef_round,
+    is_AP,
   }) {
     Object.assign(this, {
       name,
@@ -72,6 +78,7 @@ class Effect {
       cont_coef_times,
       short_text,
       cont_coef_round,
+      is_AP,
     });
   }
 
@@ -80,6 +87,13 @@ class Effect {
 
   //エフェクト効果の選択
   set_effect() {
+    //ぺナルティ
+    if (this.is_AP == "P") {
+      document.getElementById("p-eff-panel").classList.remove("hidden");
+    } else {
+      document.getElementById("p-eff-panel").classList.add("hidden");
+    }
+
     //テキスト
     document.getElementById("editer-eff-textbox-top").textContent =
       this.eff_text[0];
@@ -170,6 +184,95 @@ class Effect {
     }
     editer_need_token.textContent = token;
   }
+
+  add_eff_list() {
+    //分類
+    let array;
+    if (this.is_AP == "A") {
+      array = a_effects;
+    } else if (this.is_AP == "P") {
+      array = p_effects;
+    } else {
+      array = effects;
+    }
+
+    const new_target = () => {
+      if (!this.target) {
+        return false;
+      } else {
+        return editer_target_select.value;
+      }
+    };
+    const new_power = () => {
+      if (!this.power_ini) {
+        return false;
+      } else {
+        return editer_power_select.value;
+      }
+    };
+    const new_cont_type = () => {
+      if (this.const_cont) {
+        return false;
+      } else {
+        return editer_type_select.value;
+      }
+    };
+    const new_cont_val = () => {
+      if (
+        this.const_cont ||
+        editer_type_select == "turn" ||
+        editer_type_select == "short"
+      ) {
+        return false;
+      } else {
+        return editer_cont_val.value;
+      }
+    };
+    const new_token = Number(editer_need_token.textContent);
+
+    array.push({
+      id: this.id,
+      fail: () => {
+        if (document.getElementById("editer-qual-f").checked) {
+          return {
+            target: new_target,
+            power: new_power,
+            cont_type: new_cont_type,
+            cont_val: new_cont_val,
+            token: new_token,
+          };
+        } else {
+          return false;
+        }
+      },
+      success: () => {
+        if (document.getElementById("editer-qual-s").checked) {
+          return {
+            target: new_target,
+            power: new_power,
+            cont_type: new_cont_type,
+            cont_val: new_cont_val,
+            token: new_token,
+          };
+        } else {
+          return false;
+        }
+      },
+      critical: () => {
+        if (document.getElementById("editer-qual-c").checked) {
+          return {
+            target: new_target,
+            power: new_power,
+            cont_type: new_cont_type,
+            cont_val: new_cont_val,
+            token: new_token,
+          };
+        } else {
+          return false;
+        }
+      },
+    });
+  }
 }
 
 class SetNameEffect extends Effect {
@@ -256,6 +359,7 @@ for (const key in specialize) {
 //エフェクトリスト
 const eff_list = {
   mov_inc: new Effect({
+    id: "mov_inc",
     name: "移動力増加",
     group: "ステータス",
     eff_text: ["の移動力が", "増加する。"],
@@ -270,6 +374,7 @@ const eff_list = {
     cont_coef_times: 1,
     short_text: ["手番中", "短い"],
     cont_coef_round: 1,
+    is_AP: false,
   }),
 };
 
@@ -469,6 +574,11 @@ editer_type_select.addEventListener("change", () => {
     editer_cont_val.value = 1;
   }
   eff_list[editing_id].cal_need_token();
+});
+
+//追加ボタン
+editer_add_button.addEventListener("click", () => {
+  eff_list[editing_id].add_eff_list();
 });
 
 /********************************
