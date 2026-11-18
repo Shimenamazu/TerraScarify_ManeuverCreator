@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.overall {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: auto auto;
+}
+
+.left-panel {
+  border: 1px solid #000;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.right-panel {
+  border: 1px solid #000;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/*トークン表*/
+.token-table {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.table-head-0 {
+  width: 140px;
+}
+
+.table-head-1 {
+  width: 60px;
+}
+
+.table-head-2 {
+  width: 60px;
+}
+
+.table-head-3 {
+  width: 80px;
+}
+
+.token-table-box {
+  width: 60px;
+}
+
+/*エディタ*/
+#add-eff {
+  border: 1px solid #000;
+  padding: 8px;
+}
+
+/*エフェクトリスト*/
+#eff-list-box {
+  display: flex;
+  flex-direction: column;
+
+  height: 90px; /* ← 5個分の高さ */
+  width: 200px;
+
+  overflow-y: auto; /* ← 縦スクロール */
+  border: 1px solid #ccc;
+}
+
+#eff-list-el {
+  height: 20px; /* ボタンの高さ */
+  flex-shrink: 0; /* 縮まないように */
+}
+
+.build-eff-panel-content {
+  width: 80%;
+}
+
+.hidden {
+  display: none !important;
+}

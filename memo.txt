@@ -2,7 +2,7 @@
 
 ・分類
 -判定(roll)
--ステータス(status)
+-能力(ability)
 -治療(healing)
 -強制移動(knockback)
 -バフ・デバフ(buff)

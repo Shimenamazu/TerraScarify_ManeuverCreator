@@ -5,304 +5,64 @@
     <meta charset="UTF-8" />
     <title>TerraScarify マニューバクリエイター</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body>
-    <main>
-      <h1>TerraScarify・マニューバクリエイター</h1>
+  <body id="bg">
+    <main class="h-screen flex flex-col">
+      <header class="shadow-sm font-bold text-xl p-2 bg-white">
+        TerraScarify マニューバクリエイター
+      </header>
 
-      <!--インポート-->
-      <section class="importer">
-        <h2>インポート</h2>
-        <textarea
-          style="width: 100%; resize: none"
-          placeholder="ここに生成済みのテキストを張り付け"
-          id="importing"
-        ></textarea>
-        <br />
-        <button id="debug">デバッグ</button>
-      </section>
-
-      <!--大枠-->
-      <div class="overall">
-        <!--左側-->
-        <section class="left-panel">
-          <!--基本設定-->
-          <section class="basic-setting">
-            <h2>基本設定</h2>
-            <!--スキル名-->
-            スキル名 <input type="text" />
-            <br />
-            <!--種別-->
-            種別
-            <select id="type-select">
-              <option value="man">マニューバ</option>
-              <option value="burst">バーストスキル</option>
-              <option value="alive">アライブスキル</option>
-            </select>
-            <br />
-            <!--タイミング-->
-            タイミング
-            <select id="tmg-select">
-              <option value="adj">調整</option>
-              <option value="pre">準備</option>
-              <option value="main">主要</option>
-              <option value="just">直前</option>
-            </select>
-            <br />
-            <!--使用する技能-->
-            判定技能
-            <input type="text" />
-            <select id="pow-select">
-              <option value="full">等倍</option>
-              <option value="half">半分</option>
-            </select>
-          </section>
-          <!--トークン状況-->
-          <section class="token">
-            <h2>トークン</h2>
-            <!--トークン差-->
-            <table class="token-table">
-              <colgroup>
-                <col class="table-head-0" />
-                <col class="table-head-1 only-BA" />
-                <col class="table-head-2" />
-                <col class="table-head-3" />
-              </colgroup>
-              <tr>
-                <th>トークン</th>
-                <th class="only-BA">失敗</th>
-                <th>成功</th>
-                <th>クリティカル</th>
-              </tr>
-              <tr>
-                <td>獲得トークン</td>
-                <td id="t-g2-f" class="only-BA">0</td>
-                <td id="t-g2-s">0</td>
-                <td id="t-g2-c">0</td>
-              </tr>
-              <tr>
-                <td>要求トークン</td>
-                <td id="t-c2-f" class="only-BA">0</td>
-                <td id="t-c2-s">0</td>
-                <td id="t-c2-c">0</td>
-              </tr>
-              <tr>
-                <td>不足分</td>
-                <td id="t-l-f" class="only-BA">0</td>
-                <td id="t-l-s">0</td>
-                <td id="t-l-c">0</td>
-              </tr>
-            </table>
-            <br />
-            <!--獲得トークン-->
-            <table class="token-table">
-              <colgroup>
-                <col class="table-head-0" />
-                <col class="table-head-1 only-BA" />
-                <col class="table-head-2" />
-                <col class="table-head-3" />
-              </colgroup>
-              <tr>
-                <th>獲得トークン</th>
-                <th class="only-BA">失敗</th>
-                <th>成功</th>
-                <th>クリティカル</th>
-              </tr>
-              <tr class="only-BA">
-                <td>タイミング</td>
-                <td id="t-t-f">0</td>
-                <td id="t-t-s">0</td>
-                <td id="t-t-c">0</td>
-              </tr>
-              <tr>
-                <td>判定</td>
-                <td id="t-r-f" class="only-BA">0</td>
-                <td id="t-r-s">0</td>
-                <td id="t-r-c">0</td>
-              </tr>
-              <tr class="only-BA">
-                <td>ペナルティエフェクト</td>
-                <td id="t-p-f">0</td>
-                <td id="t-p-s">0</td>
-                <td id="t-p-c">0</td>
-              </tr>
-              <tr>
-                <td>補正</td>
-                <td id="t-gc-f" class="only-BA">0</td>
-                <td id="t-gc-s">0</td>
-                <td id="t-gc-c">0</td>
-              </tr>
-              <tr>
-                <td>合計</td>
-                <td id="t-g-f" class="only-BA">0</td>
-                <td id="t-g-s">0</td>
-                <td id="t-g-c">0</td>
-              </tr>
-            </table>
-            <br />
-            <!--要求トークン-->
-            <table class="token-table">
-              <colgroup>
-                <col class="table-head-0" />
-                <col class="table-head-1 only-BA" />
-                <col class="table-head-2" />
-                <col class="table-head-3" />
-              </colgroup>
-              <tr>
-                <th>要求トークン</th>
-                <th class="only-BA">失敗</th>
-                <th>成功</th>
-                <th>クリティカル</th>
-              </tr>
-              <tr>
-                <td>エフェクト</td>
-                <td id="t-e-f" class="only-BA">0</td>
-                <td id="t-e-s">0</td>
-                <td id="t-e-c">0</td>
-              </tr>
-              <tr class="only-BA">
-                <td>アライブエフェクト</td>
-                <td id="t-a-f">0</td>
-                <td id="t-a-s">0</td>
-                <td id="t-a-c">0</td>
-              </tr>
-              <tr>
-                <td>補正</td>
-                <td id="t-cc-f" class="only-BA">0</td>
-                <td id="t-cc-s">0</td>
-                <td id="t-cc-c">0</td>
-              </tr>
-              <tr>
-                <td>合計</td>
-                <td id="t-c-f" class="only-BA">0</td>
-                <td id="t-c-s">0</td>
-                <td id="t-c-c">0</td>
-              </tr>
-            </table>
-          </section>
-        </section>
-
-        <!--右側-->
-        <section class="right-panel">
-          <h2>エフェクトエディタ</h2>
-          <select id="sp-list" style="width: 100px">
-            移動力増加
-          </select>
-          <section class="editer">
-            <!--エフェクト追加-->
-            <button id="add-eff-button">+</button>
-            <span id="add-eff-button-text">エフェクト追加</span>
-            <!--追加用パネル-->
-            <section id="add-eff-panel" class="hidden">
-              <!--エフェクトボタンリスト-->
-              <div id="eff-list-box"></div>
-              <!--追加エディター本体-->
-              <section id="build-eff-editer" class="hidden">
-                <!--名前-->
-                <span id="build-eff-name"></span>
-                <!--再選択ボタン-->
-                <button id="build-eff-rechoice">変更</button>
-                <!--命名系エフェクト-->
-                <div id="build-eff-panel-name" class="build-eff-panel hidden">
-                  命名
-                </div>
-                <!--付与系エフェクト-->
-                <div
-                  id="build-eff-panel-enchant"
-                  class="build-eff-panel hidden"
+      <!-- 編集用枠 -->
+      <div
+        class="m-2 flex-1 min-h-0 border border-gray-800 bg-white/80 shadow-sm"
+      >
+        <div class="flex h-full w-full">
+          <!-- 左側 -->
+          <div id="left" class="h-full w-2/5 overflow-auto flex flex-col">
+            <div class="flex flex-row">
+              <div class="flex-1 p-1 font-bold">プレビュー</div>
+              <div class="p-1">
+                <button
+                  type="button"
+                  class="rounded-sm border border-gray-300 bg-gray-100 shadow-xs text-sm p-0.5 hover:bg-gray-200 hover:cursor-pointer"
                 >
-                  付与
-                </div>
-                <!--エフェクト本文-->
-                <div class="build-eff-panel-content">
-                  <!--効果-->
-                  <div>
-                    <span id="p-eff-panel" style="margin-right: 10px"
-                      >[
-                      <select id="p-eff">
-                        <option value="consider">対価</option>
-                        <option value="recoil">反動</option></select
-                      >]
-                    </span>
-                    <select
-                      id="editer-target-select"
-                      class="build-eff-content"
-                    ></select>
-                    <span
-                      id="editer-eff-textbox-top"
-                      class="build-eff-content"
-                    ></span>
-                    <select
-                      id="editer-power-select"
-                      class="build-eff-content"
-                    ></select>
-                    <span
-                      id="editer-eff-textbox-end"
-                      class="build-eff-content"
-                    ></span>
-                    <!--持続-->
-                    <span>(</span>
-                    <span
-                      id="editer-const-cont"
-                      class="build-eff-content"
-                    ></span>
-                    <input
-                      type="number"
-                      min="1"
-                      style="width: 30px"
-                      id="editer-cont-val"
-                      value="1"
-                      class="build-eff-content"
-                    />
-                    <select
-                      id="editer-type-select"
-                      class="build-eff-content"
-                    ></select>
-                    <span>)</span>
-                  </div>
-                  <!--持続-->
-                  <div></div>
-                  <!--トークン-->
-                  <div style="text-align: right">
-                    <span>要求トークン：</span>
-                    <span id="editer-need-token">0</span>
-                    <div>
-                      <span
-                        id="add-eff-fail"
-                        class="build-eff-content"
-                        style="margin-left: 20px"
-                        ><label
-                          ><input
-                            type="checkbox"
-                            checked
-                            id="editer-qual-f" /></label
-                        ><span>失敗</span></span
-                      >
-                      <label style="margin-left: 20px"
-                        ><input type="checkbox" checked id="editer-qual-s" />
-                        <span>成功</span></label
-                      >
-                      <label style="margin-left: 20px">
-                        <input
-                          type="checkbox"
-                          checked
-                          id="editer-qual-c"
-                        /><span>クリティカル </span></label
-                      >
-                    </div>
-                    <div>
-                      <button id="editer-add-button">追加</button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </section>
-            <section class="only-BA"><h4>失敗</h4></section>
-            <section><h4>成功</h4></section>
-            <section><h4>クリティカル</h4></section>
-          </section>
-        </section>
+                  コピー
+                </button>
+              </div>
+            </div>
+            <div
+              class="border bg-white/50 h-full min-h-0 m-1 mt-0 overflow-y-auto whitespace-pre-wrap wrap-break-words p-1"
+              id="preview"
+            ></div>
+          </div>
+
+          <!-- 境界 -->
+          <div
+            id="splitter"
+            class="h-full w-1 cursor-col-resize bg-gray-400 hover:bg-blue-300"
+          ></div>
+
+          <!-- 右側 -->
+          <div id="right" class="h-full min-w-0 flex-1 flex flex-col">
+            <div class="flex flex-row">
+              <div class="flex-1 p-1 font-bold">エディター</div>
+              <div class="p-1">
+                <button
+                  type="button"
+                  class="rounded-sm border border-gray-300 bg-gray-100 shadow-xs text-sm p-0.5 hover:bg-gray-200 hover:cursor-pointer"
+                >
+                  インポート
+                </button>
+              </div>
+            </div>
+            <div
+              class="border bg-white/50 h-full min-h-0 m-1 mt-0 overflow-y-auto whitespace-pre-wrap wrap-break-words p-1"
+              id="preview"
+            ></div>
+          </div>
+        </div>
       </div>
     </main>
     <script src="js/main.js" defer></script>
